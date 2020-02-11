@@ -3,6 +3,9 @@ import styled, { keyframes } from 'styled-components'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { BrowserRouter as Router, Link, Route } from "react-router-dom"
 import './animation.css'
+
+const S1E = 1.6;
+
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
   return {
@@ -66,6 +69,37 @@ const Left = keyframes`
     transform: translateX(0);
   }
 `
+
+const Down2 = keyframes`
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+`
+
+const ScaleSway = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+`
+
+const RotateSimple = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(720deg);
+  }
+`
+
 const UpMotion = keyframes`
   from {
     transform: translateY(20vh);
@@ -108,6 +142,60 @@ const Rotation = keyframes`
   } */
   100% {
     transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  }
+`
+
+const RPast = keyframes`
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  /* 25%{
+    transform: rotateX(0deg) rotateY(180deg) rotateZ(60deg);
+  }
+  50% {
+    transform: rotateX(60deg) rotateY(360deg) rotateZ(180deg);
+  }
+  75%{
+    transform: rotateX(120deg) rotateY(540deg) rotateZ(270deg);
+  } */
+  100% {
+    transform: rotateX(360deg) rotateY(270deg) rotateZ(360deg);
+  }
+`
+const RNow = keyframes`
+  0% {
+    transform: rotateX(180deg) rotateY(90deg) rotateZ(180deg);
+  }
+  /* 25%{
+    transform: rotateX(0deg) rotateY(180deg) rotateZ(60deg);
+  }
+  50% {
+    transform: rotateX(60deg) rotateY(360deg) rotateZ(180deg);
+  }
+  75%{
+    transform: rotateX(120deg) rotateY(540deg) rotateZ(270deg);
+  } */
+  100% {
+    transform: rotateX(450deg) rotateY(360deg) rotateZ(540deg);
+  }
+`
+
+
+const RFuture = keyframes`
+  0% {
+    transform: rotateX(180deg) rotateY(0deg) rotateZ(180deg);
+  }
+  /* 25%{
+    transform: rotateX(0deg) rotateY(180deg) rotateZ(60deg);
+  }
+  50% {
+    transform: rotateX(60deg) rotateY(360deg) rotateZ(180deg);
+  }
+  75%{
+    transform: rotateX(120deg) rotateY(540deg) rotateZ(270deg);
+  } */
+  100% {
+    transform: rotateX(270deg) rotateY(360deg) rotateZ(540deg);
   }
 `
 
@@ -210,8 +298,8 @@ const ToScene_1_4 = styled(ToScene_1_Base)`
 `
 
 const Flake = styled(
-  ({ width, time, ...props }: { width: number, time:number }) => (
-      <div {...props} />
+  ({ width, time, ...props }: { width: number, time: number }) => (
+    <div {...props} />
   )
 )`
   position: absolute;
@@ -238,7 +326,7 @@ const Flakes = () => {
         Array(30).fill(0).map(_ => [Math.random(), Math.random(), Math.random()]).map(arr => {
           return (
             <FlakeWrapper data-time={arr[2] * 5}>
-              <Flake width={arr[0]*width} time={arr[1]*3}></Flake>
+              <Flake width={arr[0] * width} time={arr[1] * 3}></Flake>
             </FlakeWrapper>
           )
         })
@@ -255,7 +343,7 @@ const FlakesWrapper = styled.div`
 `
 
 const Scene_1_1_W = styled.div`
-  top: ${(481 + 64 - 524)/2}px;
+  top: ${(481 + 64 - 524) / 2}px;
   left: 10px;
   position: absolute;
   width: 10px;
@@ -299,7 +387,7 @@ const Scene_1_2 = styled(Scene_1_2_W)`
     ${Right} 1.0s 1.0s cubic-bezier(1,.1,.01,.92) forwards;
 `
 const Scene_1_3_W = styled.div`
-  top: ${(481 + 64 - 524)/2}px;
+  top: ${(481 + 64 - 524) / 2}px;
   right: 10px;
   position: absolute;
   width: 10px;
@@ -399,8 +487,8 @@ const SquareWrapper = styled.div`
     opacity: 0;
     transform: translateY(-100%);
     animation: 
-      ${Down} 0.5s 2s ease forwards,
-      ${Loading} 1s 2s ease forwards;
+      ${Down} 0.5s ${S1E + 3.3}s ease forwards,
+      ${Loading} 1s ${S1E + 3.3}s ease forwards;
 `
 
 const SquareWrap = styled.div`
@@ -409,58 +497,189 @@ const SquareWrap = styled.div`
     height: 100%;
     transform-style: preserve-3d;
     transform-origin: 50px 50px;
-    animation: 
-      ${Rotation} 2.0s 2.5s ease infinite;
+`
+
+const SquareWrap1 = styled(SquareWrap)`
+  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  animation: 
+    ${RPast} 2.0s ${S1E + 3.3 + 0.5}s ease forwards;
+`
+const SquareWrap2 = styled(SquareWrap)`
+  transform: rotateX(180deg) rotateY(90deg) rotateZ(180deg);
+  animation: 
+    ${RNow} 2.0s ${S1E + 3.3 + 0.5}s ease forwards;
+`
+const SquareWrap3 = styled(SquareWrap)`
+  transform: rotateX(180deg) rotateY(0deg) rotateZ(180deg);
+  animation: 
+    ${RFuture} 2.0s ${S1E + 3.3 + 0.5}s ease forwards;
 `
 
 const Square = styled.div`
   position: absolute;
   width: 100px;
   height: 100px;
-  border: 5px solid white;
+  border: 5px solid #FFF6F6;
   box-sizing: border-box;
-  background-color: white;
+  background-color: #FFF6F6;
 `
 const SquareTop = styled(Square)`
-  transform: translateY(-50px) rotateX(-90deg);
+  transform: scaleX(-1) translateY(-50px) rotateX(-90deg);
+  background-image: url('./zai.png');
+  background-size: cover;
   background-color: #C32F27;
 `
 const SquareFront = styled(Square)`
   transform: translateZ(50px);
+  background-image: url('./ka.png');
+  background-size: cover;
   background-color: #FB6107;
 `
 const SquareBack = styled(Square)`
-  transform: translateZ(-50px);
+  transform: scaleX(-1) translateZ(-50px);
+  background-image: url('./mi.png');
+  background-size: cover;
   background-color: #E6C229;
-
 `
 const SquareUnder = styled(Square)`
-  transform: translateY(50px) rotateX(90deg);
+  transform: scaleX(-1) translateY(50px) rotateX(90deg);
+  background-image: url('./rai.png');
+  background-size: cover;
   background-color: #20BF55;
 `
 const SquareLeft = styled(Square)`
   transform: translate(-50px) rotateY(-90deg);
+  background-image: url('./gen.png');
+  background-size: cover;
   background-color: #00A6FB;
 `
 const SquareRight = styled(Square)`
   transform: translate(50px) rotateY(90deg);
+  background-image: url('./ko.png');
+  background-size: cover;
   background-color: #fcba03;
 `
 
-const Cubic = () => {
+const Cubic1 = () => {
   return (
     <SquareWrapper>
-      <SquareWrap>
-        <SquareTop/>
-        <SquareFront/>
-        <SquareBack/>
-        <SquareUnder/>
-        <SquareLeft/>
-        <SquareRight/>
-      </SquareWrap>
+      <SquareWrap1>
+        <SquareTop />
+        <SquareFront />
+        <SquareBack />
+        <SquareUnder />
+        <SquareLeft />
+        <SquareRight />
+      </SquareWrap1>
     </SquareWrapper>
   )
 }
+const Cubic2 = () => {
+  return (
+    <SquareWrapper>
+      <SquareWrap2>
+        <SquareTop />
+        <SquareFront />
+        <SquareBack />
+        <SquareUnder />
+        <SquareLeft />
+        <SquareRight />
+      </SquareWrap2>
+    </SquareWrapper>
+  )
+}
+const Cubic3 = () => {
+  return (
+    <SquareWrapper>
+      <SquareWrap3>
+        <SquareTop />
+        <SquareFront />
+        <SquareBack />
+        <SquareUnder />
+        <SquareLeft />
+        <SquareRight />
+      </SquareWrap3>
+    </SquareWrapper>
+  )
+}
+
+const CBWrapper = styled.div`
+  position: absolute;
+  top: calc(50% - 75px);
+  left: calc(50% - 75px);
+  width: 150px;
+  height: 150px;
+  background-color: #FFF6F6;
+  overflow: hidden;
+  border-radius: 10px;
+  opacity: 0;
+  animation: 
+    ${Loading} 0.2s ${S1E}s ease forwards,
+    ${ScaleSway} 1.0s ${S1E}s cubic-bezier(1,.01,0,.99) forwards 3;
+`
+const CBW_T = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  overflow: hidden;
+`
+const CB = styled(CBW_T)`
+  animation: 
+    ${RotateSimple} 0.6s ${S1E + 2.8}s cubic-bezier(0,1.03,.43,.79) forwards,
+    ${Loading} 0.7s ${S1E + 2.7}s ease forwards reverse;
+`
+const CBW_T1 = styled(CBW_T)`
+  animation: 
+    ${Loading} 0.5s ${S1E + 2.5}s  cubic-bezier(1,.02,.22,1.58) forwards reverse;
+`
+const CBW_T2 = styled(CBW_T)`
+  animation: 
+    ${Loading} 0.5s ${S1E + 1.5}s  cubic-bezier(1,.02,.22,1.58) forwards reverse;
+`
+const CBW_T3 = styled(CBW_T)`
+  animation: 
+    ${Loading} 0.5s ${S1E + 0.5}s  cubic-bezier(1,.02,.22,1.58) forwards reverse;
+`
+const C1 = styled(CBW_T)`
+  background-image: url('./1.png');
+  transform: translateY(-100%);
+  animation: 
+    ${Down} 0.5s ${S1E + 2.0}s cubic-bezier(1,.02,.22,1.58) forwards;
+`
+const C2 = styled(CBW_T)`
+  transform: translateY(-100%);
+  background-image: url('./2.png');
+  animation: 
+    ${Down} 0.5s ${S1E + 1.0}s cubic-bezier(1,.02,.22,1.58) forwards;
+`
+const C3 = styled(CBW_T)`
+  transform: translateY(-100%);
+  background-image: url('./3.png');
+  animation: 
+    ${Down} 0.5s ${S1E + 0}s cubic-bezier(1,.02,.22,1.58) forwards;
+`
+
+const CountdownBox = () => {
+  return (
+    <CB>
+      <CBWrapper>
+        <CBW_T3>
+          <C3></C3>
+        </CBW_T3>
+        <CBW_T2>
+          <C2></C2>
+        </CBW_T2>
+        <CBW_T1>
+          <C1></C1>
+        </CBW_T1>
+      </CBWrapper>
+    </CB>
+  )
+}
+
 
 const About = () => {
   return (
@@ -507,7 +726,8 @@ const About = () => {
         <Scene_1_4_W>
           <Scene_1_4></Scene_1_4>
         </Scene_1_4_W>
-        <Cubic></Cubic>
+        <CountdownBox></CountdownBox>
+        <Cubic1 />
       </CardWrapperDummy>
     </Background>
   )
