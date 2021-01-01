@@ -1358,8 +1358,9 @@ const About = () => {
         <IconWrapper>
           <Icon></Icon>
         </IconWrapper>
-        <Title>kaito_tateyama</Title>
+        <Title>Masanori Tani</Title>
         <DescriptionWrapper>
+          <Description>@kaito_tateyama (uta8a)</Description>
           <Description>ソフトウェアエンジニアを</Description>
           <Description>目指す学生です</Description>
         </DescriptionWrapper>
@@ -1413,8 +1414,9 @@ const Main = () => {
         <IconWrapper>
           <Icon></Icon>
         </IconWrapper>
-        <Title>kaito_tateyama</Title>
+        <Title>Masanori Tani</Title>
         <DescriptionWrapper>
+          <Description>@kaito_tateyama (uta8a)</Description>
           <Description>ソフトウェアエンジニアを</Description>
           <Description>目指す学生です</Description>
         </DescriptionWrapper>
