@@ -20,7 +20,7 @@ export default function Contact() {
       name: "Threads",
       alias: "@uta8a",
       url: "https://www.threads.net/@uta8a",
-      comment: null,
+      comment: "好きな文化の話をします",
     },
     {
       name: "Misskey CAMPHOR-",
