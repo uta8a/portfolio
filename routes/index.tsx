@@ -13,6 +13,7 @@ export default function Home() {
       </Head>
       <div class="p-20 mx-auto">
         <h1 class="text-4xl py-5">Masanori Tani</h1>
+        <p>Cybozuで働いています。</p>
         <a href="/contact" class="underline font-bold">Contact</a>
       </div>
     </>
