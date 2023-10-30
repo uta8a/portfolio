@@ -32,13 +32,7 @@ export default function Home() {
       name: "Twitter",
       alias: "@uta8a",
       url: "https://twitter.com/uta8a",
-      comment: "社会の話をします",
-    },
-    {
-      name: "Twitter",
-      alias: "@kaito_tateyama",
-      url: "https://twitter.com/kaito_tateyama",
-      comment: "オタクの話をします",
+      comment: "オタクと社会の話をします ※kaito_tateyama アカウントは現在は所持していません。",
     },
     {
       name: "Instagram",
