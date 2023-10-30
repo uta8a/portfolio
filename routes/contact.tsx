@@ -9,6 +9,12 @@ export default function Contact() {
       url: "https://github.com/uta8a",
       comment: "コードを書きます",
     },
+    {
+      name: "Twitter",
+      alias: "@uta8a",
+      url: "https://twitter.com/uta8a",
+      comment: "オタクの話と、社会の話をします(現在は @kaito_tateyama アカウントは所持していません)",
+    },
     { name: "discord", alias: "uta8a", url: null, comment: "DMお気軽に" },
     {
       name: "mastodon わくわく鮟鱇ランド",
@@ -27,18 +33,6 @@ export default function Contact() {
       alias: "@uta8a",
       url: "https://social.camph.net/@uta8a",
       comment: "技術の話をします",
-    },
-    {
-      name: "Twitter",
-      alias: "@uta8a",
-      url: "https://twitter.com/uta8a",
-      comment: "社会の話をします",
-    },
-    {
-      name: "Twitter",
-      alias: "@kaito_tateyama",
-      url: "https://twitter.com/kaito_tateyama",
-      comment: "オタクの話をします",
     },
     {
       name: "Instagram",
